@@ -65,3 +65,38 @@ Array.from(plusBtns).forEach(btn => {
 Array.from(minusBtns).forEach(btn => {
   btn.addEventListener("click", decrement);
 });
+
+// Add eventlistener to bill input
+bill.addEventListener("input", validateBillInput);
+bill.addEventListener("blur", () => {
+  return;
+});
+
+function validateBillInput(e) {
+  const inputVal = e.target.value;
+  const key = e.data;
+
+  checkValidInput(key, e, inputVal);
+  checkInvalidInput(key, e, inputVal);
+
+  console.log(key);
+  console.log(inputVal);
+}
+
+function checkValidInput(key, event, inputValue) {
+  if (!isNaN(parseInt(key))) {
+    switch (key) {
+      case ".":
+    }
+  }
+}
+
+function checkInvalidInput(key, event, inputValue) {
+  if (isNaN(parseInt(key))) {
+    event.target.value = inputValue.slice(0, -1);
+  }
+}
+
+function inputContains() {
+  return;
+}
