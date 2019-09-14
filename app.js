@@ -19,11 +19,12 @@ function increment(evnt) {
   let inputValue;
   switch (inputField.getAttribute("name")) {
     case "tip":
-      inputValue =
-        inputField.value.length < 3
-          ? inputField.value[0]
-          : inputField.value.slice(0, 2);
-      inputField.value = `${parseInt(inputValue) + 1}%`;
+      inputValue = parseInt(
+        inputField.value.slice(0, inputField.value.length - 1)
+      );
+      if (inputValue < 100) {
+        inputField.value = `${inputValue + 1}%`;
+      }
       break;
     case "people":
       inputValue = parseInt(inputField.value);
@@ -40,10 +41,9 @@ function decrement(evnt) {
   let inputValue;
   switch (inputField.getAttribute("name")) {
     case "tip":
-      inputValue =
-        inputField.value.length < 3
-          ? parseInt(inputField.value[0])
-          : parseInt(inputField.value.slice(0, 2));
+      inputValue = inputValue = parseInt(
+        inputField.value.slice(0, inputField.value.length - 1)
+      );
       if (inputValue > 1) {
         inputField.value = `${inputValue - 1}%`;
       }
